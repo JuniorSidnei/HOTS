@@ -6,10 +6,11 @@ void ofApp::setup()
 {
 	index = 0;
 	///Rengar
-	Rengar.setRengar(600, 1300, 350.0f);
+	Rengar.setRengar(600, 1300, 350.0f, 20.0f, 15.0f, 400);
 	Rengar.loadImage("Rengar.png");
 	Rengar.getSizeXY();
 	Rengar.setAnchor();
+
 	
 	///Minions
 	//for (int i = 0; i < 3; i++)
@@ -62,6 +63,10 @@ void ofApp::update()
 	
 		Minion.updateMinion(ofGetLastFrameTime());
 	
+		///Cooldown
+		//Q
+		
+			
 
 	World.setPosition(World.getPosition());
 
@@ -98,6 +103,7 @@ void ofApp::draw()
 	ofDrawBitmapString("Posicao x: " + ofToString(Rengar.getX()), 10, 10);
 	ofDrawBitmapString(" y: " + ofToString(Rengar.getY()), 150, 10);
 	ofDrawBitmapString("Tempo segundos: " + ofToString(Rengar.getTime()), 10, 30);
+	//ofDrawBitmapString("Cooldown Q: " + ofToString(Rengar.getQCd()), 10, 50);
 
 	Map.draw(World.getPosition());
 	WayPointsImage.drawWayPoint(World.getPosition());
@@ -110,6 +116,15 @@ void ofApp::keyPressed(int key)
 {
 	if (key == 'p')
 		WayPointsImage.setActive(true);
+
+	if (key == 'q')
+		Rengar.setSkill(0,true);
+	if (key == 'w')
+		Rengar.setSkill(1,true);
+	if (key == 'e')
+		Rengar.setSkill(2,true);
+	if (key == 'r')
+		Rengar.setSkill(3,true);
 }
 
 //--------------------------------------------------------------
@@ -117,6 +132,14 @@ void ofApp::keyReleased(int key)
 {
 	if (key == 'o')
 		WayPointsImage.setActive(false);
+	if (key == 'q')
+		Rengar.setSkill(0,false);
+	if (key == 'w')
+		Rengar.setSkill(1, false);
+	if (key == 'e')
+		Rengar.setSkill(2, false);
+	if (key == 'r')
+		Rengar.setSkill(3, false);
 }
 
 //--------------------------------------------------------------

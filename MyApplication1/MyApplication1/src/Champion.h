@@ -4,23 +4,40 @@
 class Champion : public personagem
 {
 private:
-	bool m_wayPoint1, m_wayPoint2, m_wayPoint3, m_wayPoint4;
-	int index;
+	int m_life;
+	bool skillActive[3];
+	/*bool m_QSkill = false;
+	bool m_WSkill = false;
+	bool m_ESkill = false;
+	bool m_RSkill = false;*/
+	float skillCd[3];
+	/*float m_Qcd = 5.0f;
+	float m_Wcd;
+	float m_Ecd;
+	float m_Rcd;*/
+	float m_damage;
+	float m_atkSpeed;
 
 public:
 	Champion();
 	~Champion();
-	void setRengar(float x, float y, float speed);
+	void setRengar(float x, float y, float speed, float dano, float atkspeed, int life);
 	void updateRengar(float gameTime, float time);
-	void setWayPoint1(bool waypoint1);
-	void setWayPoint2(bool waypoint2);
-	void setWayPoint3(bool waypoint3);
-	void setWayPoint4(bool waypoint4);
-	void setIndex(int index);
-	int getIndex();
-	bool getWayPoint1();
-	bool getWayPoint2();
-	bool getWayPoint3();
-	bool getWayPoint4();
-};
+	/*void setQSkill(bool qSkill);
+	void setWSkill(bool wSkill);
+	void setESkill(bool eSkill);
+	void setRSkill(bool rskill);
+	bool getQSkill();
+	bool getWSkill();
+	bool getESkill();
+	bool getRSkill();
+	float getQCd();
+	float getWCd();
+	float getECd();
+	float getRCd();*/
+	void setSkill(int index, bool active);
+	bool getskillDeactived(int index);
+	void setCd(int index, float cd);
+	float getCd(int index);
 
+};

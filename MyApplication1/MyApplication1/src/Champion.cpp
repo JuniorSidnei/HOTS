@@ -12,9 +12,6 @@ Champion::~Champion()
 }
 void Champion::updateRengar(float gameTime, float time)
 {
-	//this->m_gameTime = time;
-	
-
 	if (mouseClicked)
 	{
 		moveTo(m_destination);
@@ -25,63 +22,97 @@ void Champion::updateRengar(float gameTime, float time)
 			this->mouseClicked = false;
 		}
 	}
-	//if (time >= 30)
-	//{
-	//	setWayPoint1(true);
-	//	if (getWayPoint1() == true)
-	//		moveToWayPoint(position);
-	//	
-	//	/*moveToWayPoint(positionWayPoint);
-	//	if (this->m_Position == positionWayPoint)
-	//		this->m_Vel.set(0, 0);*/
-	//}
-
+	
 	this->m_Position += this->m_Vel * gameTime;
 }
-void Champion::setWayPoint1(bool waypoint1)
+
+void Champion::setSkill(int index, bool active)
 {
-	this->m_wayPoint1 = waypoint1;
-}
-void Champion::setWayPoint2(bool waypoint2)
-{
-	this->m_wayPoint2 = waypoint2;
-}
-void Champion::setWayPoint3(bool waypoint3)
-{
-	this->m_wayPoint3 = waypoint3;
-}
-void Champion::setWayPoint4(bool waypoint4)
-{
-	this->m_wayPoint4 = waypoint4;
-}
-void Champion::setIndex(int index)
-{
-	this->index = index;
-}
-int Champion::getIndex()
-{
-	return this->index;
-}
-bool Champion::getWayPoint1()
-{
-	return this->m_wayPoint1;
-}
-bool Champion::getWayPoint2()
-{
-	return this->m_wayPoint2;
-}
-bool Champion::getWayPoint3()
-{
-	return this->m_wayPoint3;
-}
-bool Champion::getWayPoint4()
-{
-	return this->m_wayPoint4;
+	skillActive[index] = active;
 }
 
-void Champion::setRengar(float x, float y, float speed)
+bool Champion::getskillDeactived(int index)
+{
+	return skillActive[index];
+}
+
+void Champion::setCd(int index, float cd)
+{
+	skillCd[index] = cd;
+}
+
+float Champion::getCd(int index)
+{
+	return skillCd[index];
+}
+
+//void Champion::setQSkill(bool qSkill)
+//{
+//	this->m_QSkill = qSkill;
+//}
+//
+//void Champion::setWSkill(bool wSkill)
+//{
+//	this->m_WSkill = wSkill;
+//}
+//
+//void Champion::setESkill(bool eSkill)
+//{
+//	m_ESkill = eSkill;
+//}
+//
+//void Champion::setRSkill(bool rskill)
+//{
+//	m_RSkill = rskill;
+//}
+//
+//bool Champion::getQSkill()
+//{
+//	return m_QSkill;
+//}
+//
+//bool Champion::getWSkill()
+//{
+//	return m_WSkill;
+//}
+//
+//bool Champion::getESkill()
+//{
+//	return m_ESkill;
+//}
+//
+//bool Champion::getRSkill()
+//{
+//	return m_RSkill;
+//}
+//
+//float Champion::getQCd()
+//{
+//	return m_Qcd;
+//}
+//
+//float Champion::getWCd()
+//{
+//	return m_Wcd;
+//}
+//
+//float Champion::getECd()
+//{
+//	return m_Ecd;
+//}
+//
+//float Champion::getRCd()
+//{
+//	return m_Rcd;
+//}
+
+
+void Champion::setRengar(float x, float y, float speed, float dano, float atkspeed, int life)
 {
 	this->m_Position.x = x;
 	this->m_Position.y = y;
 	this->m_Speed = speed;
+	this->m_damage = dano;
+	this->m_atkSpeed = atkspeed;
+	this->m_life = life;
 }
