@@ -4,6 +4,7 @@
 //--------------------------------------------------------------
 void ofApp::setup()
 {
+	index = 0;
 	///Rengar
 	Rengar.setRengar(600, 1300, 350.0f);
 	Rengar.loadImage("Rengar.png");
@@ -47,12 +48,20 @@ void ofApp::setup()
 //--------------------------------------------------------------
 void ofApp::update()
 {
-	Rengar.updateRengar(ofGetLastFrameTime(), ofGetElapsedTimef(), WayPoint[0].getPosXY());
+	
+	Rengar.updateRengar(ofGetLastFrameTime(), ofGetElapsedTimef());
 
-	/*for (int i = 0; i < 14; i++)
-	{
-		Minion.updateMinion(ofGetLastFrameTime(), ofGetElapsedTimef(), WayPoint[i].getPosXY());
-	}*/
+	//Spawn
+	Rengar.moveToWayPoint(WayPoint[index].getPosXY());
+	if (Rengar.getPosition().distanceSquared(WayPoint[index].getPosXY()) < 36)
+		{
+			Rengar.moveToWayPoint(WayPoint[index ++].getPosXY());
+			index = index >= 4 ? 4 : index;
+		}
+
+	
+		Minion.updateMinion(ofGetLastFrameTime());
+	
 
 	World.setPosition(World.getPosition());
 

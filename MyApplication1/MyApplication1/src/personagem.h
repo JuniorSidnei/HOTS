@@ -21,6 +21,7 @@ public:
 	void setDestination(ofVec2f destination);
 	void getSizeXY();
 	void setAnchor();
+	void setTime(float time);
 	float getX();
 	float getY();
 	float getSpeed();

@@ -95,6 +95,10 @@ ofVec2f personagem::getVel()
 {
 	return m_Vel;
 }
+void personagem::setTime(float time)
+{
+	this->m_gameTime = time;
+}
 float personagem::getTime()
 {
 	return this->m_gameTime;

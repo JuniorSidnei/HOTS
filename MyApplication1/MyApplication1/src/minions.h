@@ -7,7 +7,7 @@ class minions : public personagem
 public:
 	minions();
 	~minions();
-	void updateMinion(float gameTime, float spawnTime, ofVec2f position);
+	void updateMinion(float gameTime);
 	void setMinion(float x, float y, float speed);
 	
 	
