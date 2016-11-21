@@ -16,6 +16,6 @@ public:
 	ofVec2f getPos();
 	float getPosX();
 	float getPosY();
-	void mousePress(personagem& rengar);
+	void mousePress(personagem& rengar, ofVec2f mouse);
 };
 

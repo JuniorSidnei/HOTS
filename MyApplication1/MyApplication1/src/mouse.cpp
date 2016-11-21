@@ -42,11 +42,11 @@ float mouse::getPosY()
 	return this->m_Position.y;
 }
 
-void mouse::mousePress(personagem& rengar)
+void mouse::mousePress(personagem & rengar, ofVec2f mouse)
 {
 	rengar.setMouseCliked(true);
-	rengar.setDestination(m_Position);
-
+	rengar.setDestination(mouse);
 }
+
 
 

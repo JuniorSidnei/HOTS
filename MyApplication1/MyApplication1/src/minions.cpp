@@ -22,6 +22,7 @@ void minions::setMinion(float x, float y, float speed)
 	this->m_Position.x = x;
 	this->m_Position.y = y;
 	this->m_Speed = speed;
+	this->m_Vel.set(0, 0);
 }
 
 

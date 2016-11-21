@@ -17,7 +17,7 @@ void personagem::loadImage(std::string path)
 
 void personagem::draw(ofVec2f cam)
 {
-	ofPopMatrix();
+	ofPushMatrix();
 	ofTranslate(this->m_Position - cam);
 	ofRotateZ(this->m_angle - 180);
 	this->sprite.draw(0,0);
@@ -44,7 +44,7 @@ void personagem::getSizeXY()
 
 void personagem::setAnchor()
 {
-	this->sprite.setAnchorPoint(m_sizeX, m_sizeY);
+	this->sprite.setAnchorPoint(m_sizeX / 2, m_sizeY / 2);
 }
 
 float personagem::getX()

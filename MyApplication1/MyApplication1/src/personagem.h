@@ -9,7 +9,7 @@ protected:
 	ofVec2f m_destination;
 	ofRectangle m_Player;
 	ofImage sprite;
-	float m_Speed, m_angle, m_sizeX, m_sizeY, m_gameTime;
+	float m_Speed, m_angle = 0, m_sizeX, m_sizeY, m_gameTime;
 	bool mouseClicked = false;
 
 public:
@@ -20,6 +20,11 @@ public:
 	void setMouseCliked(bool mouse);
 	void setDestination(ofVec2f destination);
 	void getSizeXY();
+
+
+	void setPos(ofVec2f pos) {
+		m_Position = pos;
+	}
 	void setAnchor();
 	void setTime(float time);
 	float getX();

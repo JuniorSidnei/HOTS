@@ -37,4 +37,7 @@ class ofApp : public ofBaseApp{
 		Champion Rengar;
 		minions Minion;
 		int index;
+
+
+		bool spaceBar = false;
 };

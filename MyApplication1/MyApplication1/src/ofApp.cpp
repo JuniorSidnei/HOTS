@@ -53,43 +53,51 @@ void ofApp::update()
 	Rengar.updateRengar(ofGetLastFrameTime(), ofGetElapsedTimef());
 
 	//Spawn
-	Rengar.moveToWayPoint(WayPoint[index].getPosXY());
+	/*Rengar.moveToWayPoint(WayPoint[index].getPosXY());
 	if (Rengar.getPosition().distanceSquared(WayPoint[index].getPosXY()) < 36)
 		{
 			Rengar.moveToWayPoint(WayPoint[index ++].getPosXY());
 			index = index >= 4 ? 4 : index;
-		}
+		}*/
 
 	
 		Minion.updateMinion(ofGetLastFrameTime());
 	
 		///Cooldown
 		//Q
-		
+		//Minion.setPos(Rengar.getPosition());
 			
 
-	World.setPosition(World.getPosition());
+	//World.setPosition(World.getPosition());
 
-	ofVec2f mouse2(Mouse.getPos());
-	if (mouse2.x > ofGetWindowWidth() * 0.95f)
-	{
-		World.setPosition(World.getPosition() + ofVec2f(500.0f * ofGetLastFrameTime(), 0.0f));
-	}
-	else if (mouse2.x < ofGetWindowWidth() * 0.05f)
-	{
-		World.setPosition(World.getPosition() + ofVec2f(- 500.0f * ofGetLastFrameTime(), 0.0f));
-		
-	}
-	if (mouse2.y > ofGetWindowHeight() * 0.95f)
-	{
-		World.setPosition(World.getPosition() + ofVec2f(0.0f, 500.0f * ofGetLastFrameTime()));
-		
-	}
-	else if (mouse2.y < ofGetWindowHeight() * 0.05f)
-	{
-		World.setPosition(World.getPosition() + ofVec2f(0.0f, - 500.0f * ofGetLastFrameTime()));
-		
-	}
+	
+		if (spaceBar) {
+			World.setPosition(Rengar.getPosition() - ofVec2f(ofGetWidth() / 2, ofGetHeight() / 2));
+		}
+		else {
+			ofVec2f mouse2(Mouse.getPos());
+			if (mouse2.x > ofGetWindowWidth() * 0.95f)
+			{
+				World.setPosition(World.getPosition() + ofVec2f(500.0f * ofGetLastFrameTime(), 0.0f));
+			}
+			else if (mouse2.x < ofGetWindowWidth() * 0.05f)
+			{
+				World.setPosition(World.getPosition() + ofVec2f(-500.0f * ofGetLastFrameTime(), 0.0f));
+
+			}
+			if (mouse2.y > ofGetWindowHeight() * 0.95f)
+			{
+				World.setPosition(World.getPosition() + ofVec2f(0.0f, 500.0f * ofGetLastFrameTime()));
+
+			}
+			else if (mouse2.y < ofGetWindowHeight() * 0.05f)
+			{
+				World.setPosition(World.getPosition() + ofVec2f(0.0f, -500.0f * ofGetLastFrameTime()));
+
+			}
+		}
+
+	
 
 	
 	
@@ -107,8 +115,10 @@ void ofApp::draw()
 
 	Map.draw(World.getPosition());
 	WayPointsImage.drawWayPoint(World.getPosition());
-	Rengar.draw(World.getPosition());
 	Minion.draw(World.getPosition());
+	Rengar.draw(World.getPosition());
+	
+	ofDrawBitmapString("Posicao do minion zuao: " + ofToString(Minion.getPosition()), Minion.getPosition() - World.getPosition());
 }
 
 //--------------------------------------------------------------
@@ -125,6 +135,9 @@ void ofApp::keyPressed(int key)
 		Rengar.setSkill(2,true);
 	if (key == 'r')
 		Rengar.setSkill(3,true);
+
+	if (key == GLFW_KEY_SPACE)
+		spaceBar = true;
 }
 
 //--------------------------------------------------------------
@@ -140,6 +153,9 @@ void ofApp::keyReleased(int key)
 		Rengar.setSkill(2, false);
 	if (key == 'r')
 		Rengar.setSkill(3, false);
+
+	if (key == GLFW_KEY_SPACE)
+		spaceBar = false;
 }
 
 //--------------------------------------------------------------
@@ -159,8 +175,7 @@ void ofApp::mousePressed(int x, int y, int button)
 {
 	//if (button == 0)
 	//{
-	Mouse.setPosition(ofVec2f(x, y) + World.getPosition());
-		Mouse.mousePress(Rengar);
+		Mouse.mousePress(Rengar, ofVec2f(x, y) + World.getPosition());
 	//}
 }
 
