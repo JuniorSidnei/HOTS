@@ -6,7 +6,7 @@ void ofApp::setup()
 {
 	index = 1;
 	///Rengar
-	Rengar.setRengar(600, 1300, 350.0f, 20.0f, 15.0f, 400);
+	Rengar.setRengar(600, 1300, 350.0f, 20.0f, 15.0f, 400, 20.0f, 15.0f);
 	Rengar.loadImage("Rengar.png");
 	Rengar.getSizeXY();
 	Rengar.setAnchor();
@@ -106,10 +106,10 @@ void ofApp::update()
 //--------------------------------------------------------------
 void ofApp::draw()
 {
-	ofDrawBitmapString("Posicao x: " + ofToString(Rengar.getX()), 10, 10);
-	ofDrawBitmapString(" y: " + ofToString(Rengar.getY()), 150, 10);
 	ofDrawBitmapString("Tempo segundos: " + ofToString(Rengar.getTime()), 10, 30);
-	//ofDrawBitmapString("Cooldown Q: " + ofToString(Rengar.getQCd()), 10, 50);
+	ofDrawBitmapString("Damage: " + ofToString(Rengar.getDamage()), Rengar.getPosX(), Rengar.getPosY() - 50);
+	ofDrawBitmapString("Magic Resist: " + ofToString(Rengar.getTime()), Rengar.getPosX(), Rengar.getPosY() - 40);
+	ofDrawBitmapString("Speed: " + ofToString(Rengar.getTime()), Rengar.getPosX(), Rengar.getPosY() - 30);
 
 	Map.draw(World.getPosition());
 	WayPointsImage.drawWayPoint(World.getPosition());
@@ -127,17 +127,26 @@ void ofApp::keyPressed(int key)
 		WayPointsImage.setActive(true);
 
 	if (key == 'q')
-		Rengar.setSkill(0,true);
+	{
+		Rengar.setFerocity(1);
+		Rengar.setSkill(0, true);
+	}
 	if (key == 'w')
-		Rengar.setSkill(1,true);
+	{
+		Rengar.setFerocity(1);
+		Rengar.setSkill(1, true);
+	}
 	if (key == 'e')
-		Rengar.setSkill(2,true);
+	{
+		Rengar.setFerocity(1);
+		Rengar.setSkill(2, true);
+	}
 	if (key == 'r')
-		Rengar.setSkill(3,true);
+		Rengar.setSkill(3, true);
 
 	if (key == GLFW_KEY_SPACE)
 		spaceBar = true;
-}
+} 
 
 //--------------------------------------------------------------
 void ofApp::keyReleased(int key)
