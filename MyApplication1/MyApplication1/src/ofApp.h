@@ -35,7 +35,7 @@ class ofApp : public ofBaseApp{
 		wayPoints WayPointsImage;
 		wayPoints WayPoint[14];
 		Champion Rengar;
-		minions Minion;
+		minions Minion[3];
 		int index;
 
 

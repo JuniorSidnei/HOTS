@@ -13,13 +13,13 @@ void ofApp::setup()
 
 	
 	///Minions
-	//for (int i = 0; i < 3; i++)
-	//{
-		Minion.setMinion(800, 1300, 250.0f);
-		Minion.loadImage("Minion.png");
-		Minion.getSizeXY();
-		Minion.setAnchor();
-	//}
+	for (int i = 0; i < 3; i++)
+	{
+		Minion[i].setMinion(800, 1300, 250.0f);
+		Minion[i].loadImage("Minion.png");
+		Minion[i].getSizeXY();
+		Minion[i].setAnchor();
+	}
 	Map.loadMap("Mapa.png");
 	WayPointsImage.loadWayPoint("WayPoints.png");
 
@@ -51,18 +51,22 @@ void ofApp::update()
 {
 	
 	Rengar.updateRengar(ofGetLastFrameTime(), ofGetElapsedTimef());
-	Minion.updateMinion(ofGetLastFrameTime());
+	for(int i = 0; i < 14; i++)
+		Minion[i].updateMinion(ofGetLastFrameTime());
 
 	//Spawn
-	if(ofGetElapsedTimef() < 30)
-	Minion.setPosition(WayPoint[0].getPosXY());
-	else
-	Minion.moveToWayPoint(WayPoint[index].getPosXY());
-	if (Minion.getPosition().distanceSquared(WayPoint[index].getPosXY()) < 36)
+	/*for (int i = 0; i < 3; i++)
 	{
-		Minion.moveToWayPoint(WayPoint[index++].getPosXY());
-		index = index >= 4 ? 4 : index;
-	}
+		if (ofGetElapsedTimef() < 30)
+			Minion[i].setPosition(WayPoint[0].getPosXY());
+		else
+			Minion[i].moveToWayPoint(WayPoint[index].getPosXY());
+		if (Minion[i].getPosition().distanceSquared(WayPoint[index].getPosXY()) < 36)
+		{
+			Minion[i].moveToWayPoint(WayPoint[index++].getPosXY());
+			index = index >= 4 ? 4 : index;
+		}
+	}*/
 
 	
 		if (spaceBar) {
@@ -109,10 +113,11 @@ void ofApp::draw()
 
 	Map.draw(World.getPosition());
 	WayPointsImage.drawWayPoint(World.getPosition());
-	Minion.draw(World.getPosition());
+	for(int i = 0; i <3; i ++)
+		Minion[i].draw(World.getPosition());
 	Rengar.draw(World.getPosition());
 	
-	ofDrawBitmapString("Posicao do minion zuao: " + ofToString(Minion.getPosition()), Minion.getPosition() - World.getPosition());
+	
 }
 
 //--------------------------------------------------------------

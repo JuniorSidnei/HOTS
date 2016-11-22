@@ -10,11 +10,7 @@ wayPoints::wayPoints()
 wayPoints::~wayPoints()
 {
 }
-//void wayPoints::setPathCoordenates(int index, float x, float y)
-//{
-	//this->m_WayPointPath[index].x = x;
-	//this->m_WayPointPath[index].y = y;
-//}
+
 void wayPoints::loadWayPoint(std::string path)
 {
 	this->m_wayPoint.loadImage(path);
