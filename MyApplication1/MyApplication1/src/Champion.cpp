@@ -28,13 +28,15 @@ void Champion::updateRengar(float gameTime, float time)
 	{
 		m_damage = 60.0f;
 		m_atkSpeed += 5.0f;
-		
+		setCd(0, 6.0f);
+		setSkill(0, false);
 	}
 	//W
 	if (getSkill(1) == true)
 	{
 		m_armor += 10.0f;
 		m_magicResist += 5.0f;
+		setCd(1, 15.0f);
 	}
 	//E
 
@@ -42,6 +44,7 @@ void Champion::updateRengar(float gameTime, float time)
 	if (getSkill(3) == true)
 	{
 		m_Speed = 450.0f;
+		setCd(2, 120.0f);
 	}
 	
 	this->m_Position += this->m_Vel * gameTime;

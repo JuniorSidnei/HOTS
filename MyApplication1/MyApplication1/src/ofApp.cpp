@@ -15,7 +15,7 @@ void ofApp::setup()
 	///Minions
 	for (int i = 0; i < 3; i++)
 	{
-		Minion[i].setMinion(800, 1300, 250.0f);
+		Minion[i].setMinion(800, 1300,(100 + (rand() % 100)));
 		Minion[i].loadImage("Minion.png");
 		Minion[i].getSizeXY();
 		Minion[i].setAnchor();
@@ -55,7 +55,7 @@ void ofApp::update()
 		Minion[i].updateMinion(ofGetLastFrameTime());
 
 	//Spawn
-	/*for (int i = 0; i < 3; i++)
+	for (int i = 0; i < 3; i++)
 	{
 		if (ofGetElapsedTimef() < 30)
 			Minion[i].setPosition(WayPoint[0].getPosXY());
@@ -66,7 +66,7 @@ void ofApp::update()
 			Minion[i].moveToWayPoint(WayPoint[index++].getPosXY());
 			index = index >= 4 ? 4 : index;
 		}
-	}*/
+	}
 
 	
 		if (spaceBar) {
@@ -106,10 +106,7 @@ void ofApp::update()
 //--------------------------------------------------------------
 void ofApp::draw()
 {
-	ofDrawBitmapString("Tempo segundos: " + ofToString(Rengar.getTime()), 10, 30);
-	ofDrawBitmapString("Damage: " + ofToString(Rengar.getDamage()), Rengar.getPosX(), Rengar.getPosY() - 50);
-	ofDrawBitmapString("Magic Resist: " + ofToString(Rengar.getTime()), Rengar.getPosX(), Rengar.getPosY() - 40);
-	ofDrawBitmapString("Speed: " + ofToString(Rengar.getTime()), Rengar.getPosX(), Rengar.getPosY() - 30);
+	
 
 	Map.draw(World.getPosition());
 	WayPointsImage.drawWayPoint(World.getPosition());
@@ -117,7 +114,11 @@ void ofApp::draw()
 		Minion[i].draw(World.getPosition());
 	Rengar.draw(World.getPosition());
 	
-	
+	ofDrawBitmapString("Tempo segundos: " + ofToString(Rengar.getTime()), 10, 30);
+	ofDrawBitmapString("Damage: " + ofToString(Rengar.getDamage()), 10, 50);
+	ofDrawBitmapString("Magic Resist: " + ofToString(Rengar.getMResist()), 10, 70);
+	ofDrawBitmapString("Speed: " + ofToString(Rengar.getSpeed()), 10, 90);
+	ofDrawBitmapString("Q Cd " + ofToString(Rengar.getCd(0)), 10, 110);
 }
 
 //--------------------------------------------------------------
@@ -126,22 +127,22 @@ void ofApp::keyPressed(int key)
 	if (key == 'p')
 		WayPointsImage.setActive(true);
 
-	if (key == 'q')
+	if (key == 'q' && Rengar.getCd(0) == 0)
 	{
 		Rengar.setFerocity(1);
 		Rengar.setSkill(0, true);
 	}
-	if (key == 'w')
+	if (key == 'w' && Rengar.getCd(1) == 0)
 	{
 		Rengar.setFerocity(1);
 		Rengar.setSkill(1, true);
 	}
-	if (key == 'e')
+	if (key == 'e' && Rengar.getCd(2) == 0)
 	{
 		Rengar.setFerocity(1);
 		Rengar.setSkill(2, true);
 	}
-	if (key == 'r')
+	if (key == 'r' && Rengar.getCd(3) == 0)
 		Rengar.setSkill(3, true);
 
 	if (key == GLFW_KEY_SPACE)
