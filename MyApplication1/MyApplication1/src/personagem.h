@@ -17,14 +17,10 @@ public:
 	~personagem();
 	void loadImage(std::string path);
 	void draw(ofVec2f cam);
+	void setPosition(ofVec2f position);
 	void setMouseCliked(bool mouse);
 	void setDestination(ofVec2f destination);
 	void getSizeXY();
-
-
-	void setPos(ofVec2f pos) {
-		m_Position = pos;
-	}
 	void setAnchor();
 	void setTime(float time);
 	float getX();

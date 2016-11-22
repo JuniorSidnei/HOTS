@@ -24,6 +24,11 @@ void personagem::draw(ofVec2f cam)
 	ofPopMatrix();
 }
 
+void personagem::setPosition(ofVec2f position)
+{
+	m_Position = position;
+}
+
 
 
 void personagem::setMouseCliked(bool mouse)
