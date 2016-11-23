@@ -8,6 +8,8 @@
 #include "wayPoints.h"
 #include "minions.h"
 #include "Champion.h"
+#include <vector>
+#include <iostream>
 
 class ofApp : public ofBaseApp{
 
@@ -33,7 +35,7 @@ class ofApp : public ofBaseApp{
 		maps Map;
 		cam World;
 		wayPoints WayPointsImage;
-		wayPoints WayPoint[14];
+		wayPoints WayPoint[15];
 		Champion Rengar;
 		minions Minion[3];
 		int index;

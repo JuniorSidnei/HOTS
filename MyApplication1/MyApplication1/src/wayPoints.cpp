@@ -22,9 +22,9 @@ void wayPoints::drawWayPoint(ofVec2f camera)
 		this->m_wayPoint.draw(0 - camera.x, 0 - camera.y);
 }
 
-ofVec2f wayPoints::getPosXY()
+ofVec2f wayPoints::getPosXY() const
 {
-	return this->m_Position;
+	return m_Position;
 }
 
 void wayPoints::setActive(bool active)

@@ -15,7 +15,6 @@ void ofApp::setup()
 	///Minions
 	for (int i = 0; i < 3; i++)
 	{
-		Minion[i].setMinion(800, 1300,(100 + (rand() % 100)));
 		Minion[i].loadImage("Minion.png");
 		Minion[i].getSizeXY();
 		Minion[i].setAnchor();
@@ -51,7 +50,7 @@ void ofApp::update()
 {
 	
 	Rengar.updateRengar(ofGetLastFrameTime(), ofGetElapsedTimef());
-	for(int i = 0; i < 14; i++)
+	for(int i = 0; i < 3; i++)
 		Minion[i].updateMinion(ofGetLastFrameTime());
 
 	//Spawn
@@ -118,6 +117,7 @@ void ofApp::draw()
 	ofDrawBitmapString("Damage: " + ofToString(Rengar.getDamage()), 10, 50);
 	ofDrawBitmapString("Magic Resist: " + ofToString(Rengar.getMResist()), 10, 70);
 	ofDrawBitmapString("Speed: " + ofToString(Rengar.getSpeed()), 10, 90);
+	ofDrawBitmapString("Armor: " + ofToString(Rengar.getArmor()), 10, 110);
 	ofDrawBitmapString("Q Cd " + ofToString(Rengar.getCd(0)), 10, 110);
 }
 
@@ -154,15 +154,6 @@ void ofApp::keyReleased(int key)
 {
 	if (key == 'o')
 		WayPointsImage.setActive(false);
-	if (key == 'q')
-		Rengar.setSkill(0,false);
-	if (key == 'w')
-		Rengar.setSkill(1, false);
-	if (key == 'e')
-		Rengar.setSkill(2, false);
-	if (key == 'r')
-		Rengar.setSkill(3, false);
-
 	if (key == GLFW_KEY_SPACE)
 		spaceBar = false;
 }

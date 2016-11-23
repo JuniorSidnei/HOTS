@@ -10,6 +10,7 @@ private:
 	float m_damage, m_armor, m_magicResist;
 	float m_atkSpeed;
 	int m_ferocity;
+	bool cdQ;
 
 public:
 	Champion();

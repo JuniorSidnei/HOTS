@@ -13,7 +13,7 @@ public:
 	//void setPathCoordenates(int index, float x, float y);
 	void loadWayPoint(std::string path);
 	void drawWayPoint(ofVec2f camera);
-	ofVec2f getPosXY();
+	ofVec2f getPosXY() const;
 	void setActive(bool active);
 	void setPos(float x, float y);
 	wayPoints();
